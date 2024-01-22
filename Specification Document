@@ -1,0 +1,104 @@
+LockedMe.com - Specification Document
+
+1. Introduction
+Project Overview
+LockedMe.com is a prototype application developed by Lockers Pvt. Ltd. aiming to digitize their products. This command-line file manager provides basic file operations, emphasizing simplicity and performance.
+Project Objectives
+The primary objective of LockedMe.com is to implement core file management features and establish a foundation for future enhancements.
+2. Product Features
+User Interface
+Welcome Screen
+Displays the application name and developer details.
+Main Menu
+Option to show current file names in ascending order.
+Option to access file operations.
+Option to close the application.
+File Operations Menu
+Sub-menu with options for adding, deleting, and searching for files.
+Option to return to the main menu.
+Core Features
+File Operations
+Show File Names
+Displays the current file names in ascending order.
+Add a File
+Adds a user-specified file to the application.
+Delete a File
+Deletes a user-specified file from the application.
+ 
+Search for a File
+Searches for a user-specified file in the application.
+Close Application
+Allows the user to close the application.
+3. Sprint 1
+Tasks
+Implement a Welcome Screen and Main Menu.
+Develop the functionality to show current file names.
+Create the File Operations Menu.
+Implement the addFile, deleteFile, searchFile, and closeApplication operations.
+4. GitHub Repository
+The source code is hosted on GitHub: GitHub Repository Link
+
+5. Flowchart
+Flowchart: Main Menu
+Start --> Display Welcome Screen --> Display Main Menu
+        |
+        V
+  User Chooses Option
+        |
+        V
+  Show File Names --> File Operations Menu
+        |
+        V
+  User Chooses Operation
+        |
+        V
+  Perform File Operation --> User Chooses to Continue
+        |
+        V
+  Display Main Menu --> End
+        |
+        V
+       End
+
+
+
+Flowchart: File Operations Menu
+Start --> File Operations Menu
+        |
+        V
+  User Chooses Operation
+        |
+        V
+  Perform File Operation --> User Chooses to Continue
+        |
+        V
+  File Operations Menu --> End
+        |
+        V
+       End
+ 
+6. Core Concepts
+1.	Object-Oriented Programming (OOP):
+•	 Classes such as FileManager, FileOperationsMenu, and MainMenu encapsulate behavior and state.
+2.	Methods and Functions:
+•	Methods like showWelcomeScreen(), showMainMenu(), and various file operation methods perform specific functionalities.
+3.	User Input Handling:
+•	Methods like addFile(), deleteFile(), and searchFile() take user input for file operations.
+4.	Flow Control (Loops and Conditionals):
+•	Loops control the continuous display of menus, and conditionals handle user choices.
+5.	Arrays and Collections:
+•	The LinkedList<String> in FileOperationsMenu.
+6.	Exception Handling:
+•	The Scanner usage is wrapped with exception handling to manage unexpected inputs.
+7.	File I/O (Input/Output):
+•	Reading and writing files would be critical for a fully functional file manager.
+8.	Sorting Algorithms:
+•	The Arrays.sort() method is applied to sort file names alphabetically.
+9.	User Interface Design:
+•	The welcome screen and menu displays provide a basic user interface.
+10.	Version Control (Git and GitHub):
+•	Commits, branches, and repositories on GitHub help track changes and collaborate with others.
+
+7. Conclusion
+The sprint aims to deliver a functional prototype of LockedMe.com with essential file management features.
+Continuous improvement 
