@@ -1,10 +1,11 @@
 package backend;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileOperationsMenu {
-    private static LinkedList<String> fileNames = new LinkedList<>();
+    private static String[] fileNames = new String[100]; // Assuming a maximum of 100 files
+    private static int fileCount = 0; // To keep track of the number of files
     private static Scanner scanner = new Scanner(System.in);
 
     // Displays the menu with file operation options
@@ -39,14 +40,14 @@ public class FileOperationsMenu {
             }
         }
     }
-    
-    // Displays file names in ascending order
+
+    // Displays file names in alphabetical order
     public static void showFileNames() {
-        if (!fileNames.isEmpty()) {
-            fileNames.sort(String::compareTo);
-            System.out.println("File names in ascending order:");
-            for (String fileName : fileNames) {
-                System.out.println(fileName);
+        if (fileCount > 0) {
+            Arrays.sort(fileNames, 0, fileCount);
+            System.out.println("File names in alphabetical order:");
+            for (int i = 0; i < fileCount; i++) {
+                System.out.println(fileNames[i]);
             }
         } else {
             System.out.println("The list of file names is empty.");
@@ -55,39 +56,48 @@ public class FileOperationsMenu {
 
     // Adds file to the list
     private static void addFile() {
-    	System.out.print("Enter the file name to add: ");
+        System.out.print("Enter the file name to add: ");
         String fileName = scanner.nextLine();
 
-        if (!fileNames.contains(fileName)) {
-            fileNames.add(fileName);
+        if (fileCount < fileNames.length) {
+            fileNames[fileCount++] = fileName;
             System.out.println("File added successfully: " + fileName);
         } else {
-            System.out.println("File already exists: " + fileName);
+            System.out.println("Cannot add more files. The list is full.");
         }
     }
 
     // Deletes file from the list
     private static void deleteFile() {
-    	System.out.print("Enter the file name to delete: ");
+        System.out.print("Enter the file name to delete: ");
         String fileName = scanner.nextLine();
 
-        if (fileNames.remove(fileName)) {
-            System.out.println("File deleted successfully: " + fileName);
-        } else {
-            System.out.println("File not found: " + fileName);
+        for (int i = 0; i < fileCount; i++) {
+            if (fileNames[i].equals(fileName)) {
+                // Shift elements to remove the file name
+                for (int j = i; j < fileCount - 1; j++) {
+                    fileNames[j] = fileNames[j + 1];
+                }
+                fileNames[--fileCount] = null; 
+                System.out.println("File deleted successfully: " + fileName);
+                return;
+            }
         }
+        System.out.println("File not found: " + fileName);
     }
 
     // Searches for file in the list
     private static void searchFile() {
-    	 System.out.print("Enter the file name to search: ");
-         String fileName = scanner.nextLine();
+        System.out.print("Enter the file name to search: ");
+        String fileName = scanner.nextLine();
 
-         if (fileNames.contains(fileName)) {
-             System.out.println("File found: " + fileName);
-         } else {
-             System.out.println("File not found: " + fileName);
-         }
+        for (int i = 0; i < fileCount; i++) {
+            if (fileNames[i].equals(fileName)) {
+                System.out.println("File found: " + fileName);
+                return;
+            }
+        }
+        System.out.println("File not found: " + fileName);
     }
 }
 
